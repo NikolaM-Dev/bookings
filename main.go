@@ -7,10 +7,10 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		n, err := fmt.Fprintf(w, "Hello World!")
-		if err != nil {
-			fmt.Println(err)
-		}
+// Home is the home page handler
+func Home(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "This is the home page")
+}
 
 		fmt.Printf("Number of bytes written: %d\n", n)
 	})
