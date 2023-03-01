@@ -5,8 +5,8 @@ import (
 	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+const portNumber = ":8080"
+
 // Home is the home page handler
 func Home(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "This is the home page")
@@ -23,4 +23,11 @@ func About(w http.ResponseWriter, r *http.Request) {
 func addValues(x, y int) int {
 	return x + y
 }
+
+// main si the main application function
+func main() {
+	http.HandleFunc("/", Home)
+	http.HandleFunc("/about", About)
+
+	_ = http.ListenAndServe(portNumber, nil)
 }
