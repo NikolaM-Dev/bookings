@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"net/http"
@@ -52,6 +53,7 @@ func Divide(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "%f divided by %f is %f", x, y, f)
 }
 
+// main is the main application function
 func main() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/about", About)
