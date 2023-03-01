@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2023-03-01T13:03:35.895Z",
+  "__export_date": "2023-03-01T13:24:08.177Z",
   "__export_source": "insomnia.desktop.app:v2022.7.5",
   "resources": [
     {
@@ -51,6 +51,29 @@
       "headers": [],
       "authentication": {},
       "metaSortKey": -1677675755594,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_7bbbf7f7ee89431c87116710ade5e1eb",
+      "parentId": "wrk_e340c12e993847aba4ac4c587d5d9df3",
+      "modified": 1677676776138,
+      "created": 1677676776138,
+      "url": "http://localhost:8080/divide",
+      "name": "New Request",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1677676776138,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
