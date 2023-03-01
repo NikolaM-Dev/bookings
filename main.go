@@ -19,5 +19,8 @@ func About(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "This is the about page and 2 + 2 is %d", sum)
 }
 
-	_ = http.ListenAndServe(":8080", nil)
+// addValues adds two integers and return the sum
+func addValues(x, y int) int {
+	return x + y
+}
 }
