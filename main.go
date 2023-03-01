@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -28,6 +29,8 @@ func addValues(x, y int) int {
 func main() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/about", About)
+
+	log.Printf("Starting application on port %s\n", portNumber)
 
 	_ = http.ListenAndServe(portNumber, nil)
 }
