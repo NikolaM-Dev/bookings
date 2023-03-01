@@ -37,9 +37,25 @@ func divideValues(x, y float64) (float64, error) {
 
 	return result, nil
 }
+
+// Divide is the divide page handler
+func Divide(w http.ResponseWriter, r *http.Request) {
+	x, y := 100.0, 0.0
+
+	f, err := divideValues(x, y)
+	if err != nil {
+		fmt.Fprintf(w, "Cannot divide by 0")
+
+		return
+	}
+
+	fmt.Fprintf(w, "%f divided by %f is %f", x, y, f)
+}
+
 func main() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/about", About)
+	http.HandleFunc("/divide", Divide)
 
 	log.Printf("Starting application on port %s\n", portNumber)
 
