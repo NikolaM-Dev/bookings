@@ -25,7 +25,18 @@ func addValues(x, y int) int {
 	return x + y
 }
 
-// main si the main application function
+// divideValues divide two float64 and return the division
+func divideValues(x, y float64) (float64, error) {
+	if y == 0 {
+		err := errors.New("cannot divide by zero")
+
+		return 0, err
+	}
+
+	result := x / y
+
+	return result, nil
+}
 func main() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/about", About)
