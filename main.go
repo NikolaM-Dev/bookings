@@ -12,8 +12,12 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "This is the home page")
 }
 
-		fmt.Printf("Number of bytes written: %d\n", n)
-	})
+// About is the about page handler
+func About(w http.ResponseWriter, r *http.Request) {
+	sum := addValues(2, 2)
+
+	fmt.Fprintf(w, "This is the about page and 2 + 2 is %d", sum)
+}
 
 	_ = http.ListenAndServe(":8080", nil)
 }
