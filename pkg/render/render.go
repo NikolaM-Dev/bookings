@@ -14,3 +14,19 @@ func RenderTemplateTest(w http.ResponseWriter, tmpl string) {
 		fmt.Println("err parsing template:", err)
 	}
 }
+// createTemplateCache create a template and add it to the cache
+func createTemplateCache(t string) error {
+	templates := []string{
+		fmt.Sprintf("./templates/%s.page.tmpl", t),
+		"./templates/base.layout.tmpl",
+	}
+
+	tmpl, err := template.ParseFiles(templates...)
+	if err != nil {
+		return err
+	}
+
+	tc[t] = tmpl
+
+	return nil
+}
