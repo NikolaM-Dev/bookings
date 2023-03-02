@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-// RenderTemplate renders a template
+// RenderTemplateTest renders a template without cache
 func RenderTemplateTest(w http.ResponseWriter, tmpl string) {
 	parsedTemplate, _ := template.ParseFiles("./templates/"+tmpl+".page.tmpl", "./templates/base.layout.tmpl")
 	err := parsedTemplate.Execute(w, nil)
