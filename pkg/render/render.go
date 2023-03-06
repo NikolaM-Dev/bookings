@@ -7,31 +7,40 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+
+	"github.com/NikolaM-Dev/bookings/pkg/config"
 )
+
+var app *config.AppConfig
+
+// NewTemplates sets the config for the render package
+func NewTemplates(a *config.AppConfig) {
+	app = a
+}
 
 // RenderTemplate renders a template without cache
 func RenderTemplate(w http.ResponseWriter, tmpl string) {
-	tc, err := CreateTemplateCache()
-	if err != nil {
-		log.Fatal(err)
+	var tc map[string]*template.Template
+
+	if app.UseCache {
+		tc = app.TemplateCache
+	} else {
+		tc, _ = CreateTemplateCache()
 	}
 
 	page := fmt.Sprintf("%s.page.tmpl", tmpl)
-	log.Println(tmpl, page)
 	t, ok := tc[page]
 	if !ok {
-		log.Fatal(err)
+		log.Fatal("could not get template from template cache")
 	}
 
 	buf := new(bytes.Buffer)
-	err = t.Execute(buf, nil)
-	if err != nil {
-		log.Println(err)
-	}
 
-	_, err = buf.WriteTo(w)
+	_ = t.Execute(buf, nil)
+
+	_, err := buf.WriteTo(w)
 	if err != nil {
-		log.Println(err)
+		log.Println("Error writing template to browser")
 	}
 }
 
@@ -64,8 +73,6 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 
 		cache[name] = ts
 	}
-
-	log.Println(cache)
 
 	return cache, nil
 }
